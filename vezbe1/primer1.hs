@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 --1
 ukloniPoslednjiElement :: [Int] -> [Int]
 ukloniPoslednjiElement [] = []
@@ -32,7 +33,7 @@ imaVelikaSlova :: [Char] -> Bool
 imaVelikaSlova [] = False
 imaVelikaSlova (x:xs)
     | isAsciiUpper x = True
-    | otherwise            = imaVelikaSlova xs
+    | otherwise      = imaVelikaSlova xs
 
 isAsciiUpper :: Char -> Bool
 isAsciiUpper c = c >= 'A' && c <= 'Z'
@@ -41,16 +42,43 @@ isAsciiUpper c = c >= 'A' && c <= 'Z'
 
 --5 
 spljosti :: [Int] -> [Int]
-spljosti x = x
+spljosti [x] = [x]
+spljosti [x,y] = if x == y then [x] else [x,y]
+spljosti (x:y:xs)
+    | x == y = spljosti (x:xs)
+    | otherwise = x : spljosti (y:xs)
 
 
 --6
+-- Napisati funkciju koja iz liste stringova izbacuje one koji imaju 
+--sva mala slova
+baremJednoVeliko :: [[Char]] -> [[Char]]
+baremJednoVeliko [] = []
+baremJednoVeliko (x:xs) = if imaVelikaSlova x then  x : baremJednoVeliko xs else baremJednoVeliko xs
 
 
 --7
+-- ZF ekvivalent .map() u JS za sada*
 kvadriraj :: [Int] -> [Int]
 kvadriraj l = [ x * x | x <- l ]
 
+
+--8
+jeDeljiv :: Int -> Int -> Bool
+jeDeljiv x y
+    | mod x y == 0  = True
+    | otherwise = False
+
+--9 
+deljivSa3 :: Int -> Bool
+deljivSa3 x
+    | x < 10 = mod x 3 == 0
+    | otherwise = mod (sumaCif x) 3 == 0
+
+sumaCif :: Int -> Int
+sumaCif x
+    | x < 10 = x
+    | otherwise = x `mod` 10 + sumaCif (x `div` 10)
 
 --10
 daLiJeNeparan :: Int -> Bool
@@ -59,8 +87,12 @@ daLiJeNeparan n = mod n 2 == 1
 
 filter' f [] = []
 filter' f (x:xs)
-    | f x       = filter' f xs
-    | otherwise = x : filter' f xs
+    | f x       = x : filter' f xs
+    | otherwise = filter' f xs
 
 --primer koriscenja filter'
 -- filter' daLiJeNeparan [1..15]
+
+--11
+sviDeljiviSa3 :: [Int] -> [Int]
+sviDeljiviSa3 = filter' deljivSa3
