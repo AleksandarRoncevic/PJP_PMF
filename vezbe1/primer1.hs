@@ -71,19 +71,11 @@ jeDeljiv x y
 
 --9 
 deljivSa3 :: Int -> Bool
-deljivSa3 x
-    | x < 10 = mod x 3 == 0
-    | otherwise = mod (sumaCif x) 3 == 0
-
-sumaCif :: Int -> Int
-sumaCif x
-    | x < 10 = x
-    | otherwise = x `mod` 10 + sumaCif (x `div` 10)
+deljivSa3 x = jeDeljiv x 3
 
 --10
 daLiJeNeparan :: Int -> Bool
 daLiJeNeparan n = mod n 2 == 1
-
 
 filter' f [] = []
 filter' f (x:xs)
