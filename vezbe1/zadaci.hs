@@ -65,13 +65,12 @@ kvadriraj l = [ x * x | x <- l ]
 
 --8
 jeDeljiv :: Int -> Int -> Bool
-jeDeljiv x y
-    | mod x y == 0  = True
-    | otherwise = False
+jeDeljiv 0 _ = False  --edge case
+jeDeljiv x y = mod y x == 0
 
 --9 
 deljivSa3 :: Int -> Bool
-deljivSa3 x = jeDeljiv x 3
+deljivSa3 = jeDeljiv 3
 
 --10
 daLiJeNeparan :: Int -> Bool
