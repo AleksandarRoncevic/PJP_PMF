@@ -38,6 +38,7 @@ izbaciParne' (h:t)
     where
         neparni = filter odd h
 
+izbaciParne'' :: Integral a => [[a]] -> [[a]]
 izbaciParne'' l = map (filter odd) (filter (any odd) l)
 
 --filter (any odd) proverava da li podlista ima barem jedan

@@ -49,3 +49,11 @@ nadjiPoImenu' imePlanete l
     | otherwise                   = head filtriranaLista
     where
         filtriranaLista = filter (\x -> ime x == imePlanete ) l
+
+nadjiPoImenu'' :: String -> Planete -> Planeta
+nadjiPoImenu'' imePlanete = foldr (\p accum -> if imePlanete == ime p then p else accum) Nista
+
+--8
+
+vratiGasovite :: Planete -> Planete
+vratiGasovite = filter gasovita
