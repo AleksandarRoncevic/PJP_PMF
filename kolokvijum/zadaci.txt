@@ -1,0 +1,28 @@
+Napisati funkciju koja ocekuje listu brojeva [Int]. 
+Ova funkcija iz liste brojeva izbacuje sve one koji nisu prosti. Koristiti filter funkciju.
+Zatim, napisati funkciju koja ocekuje listu brojeva L [Int], nad njom primeni prethodnu, 
+nakon cega kao rezultat vrati ostatak pri deljenju svakog od tih prostih brojeva sa duzinom originalne liste L. 
+Koristiti map funkciju.
+
+--2
+
+Definisati tip podataka Stednja koja predstavlja stedni racun u banci. 
+Stednja moze da bude DinarskaStednja ili DeviznaStednja. 
+Obe stednje kao osobine imaju kamatnu stopu (double) i informaciju da li su orocene ili neorocene (boolean). 
+DeviznaStednja, za razliku od Dinarske, takodje ima boolean koji predstavlja da li je u evrima ili nije.
+Napisati funkciju koja prolazi kroz listu stednji i vraca sve dinarske stednje cija je kamatna stopa veca od 2.9%, 
+devizne stednje koje su orocene i imaju kamatnu stopu vecu od 1% i one devizne stednje koje nisu u evrima, ali jesu orocene.
+
+--3
+Napisati funkciju koja izracunava determinantu kvadratne matrice. Potrebno je prvo proveriti da li je matrica kvadratna. Determinanta se racuna na sledeci nacin:
+         𝑛     𝑖+𝑗
+𝑑𝑒𝑡(𝐴) = ∑ (− 1) 𝑎𝑖𝑗𝑀𝑖𝑗 ,za neko j
+        𝑖=1
+Mij je minor matrica (dobijena uklanjanjem i-te vrste i j-te kolone iz originalne matrice). Ako je ova matrica dimenzija vecih od 2x2, onda se njena determinanta racuna rekurzivno, a ako jeste 2x2, onda pomocu sledeceg pravila:
+
+
+a = DinarskaStednja { kamata = 3, orocena = False } 
+b = DinarskaStednja { kamata = 2, orocena = False } 
+c = DeviznaStednja {kamata = 1.5, orocena = True, uEvrima = True }
+d = DeviznaStednja {kamata = 0.9, orocena = True, uEvrima = False }
+e = DeviznaStednja {kamata = 0.8, orocena = True, uEvrima = True}
