@@ -45,7 +45,7 @@ kvadriraj [] = []
 kvadriraj l = map (\x -> x * x) l
 
 --5
-data Naselje = 
+data Naselje =
     Selo {
         brojStanovnika :: Int,
         povrsina :: Double,
@@ -67,11 +67,11 @@ type Naselja = [Naselje]
 izdvoji :: Naselja -> Naselja
 izdvoji [] = []
 izdvoji (h:t)
-    | jeSelo h && (tip h) == "razbijeno" = h : izdvoji t --slucaj za sela
-    | jeGrad h && (imaBazen h) && (brojStanovnika h) > 150000 = h : izdvoji t
+    | jeSelo h && tip h == "razbijeno" = h : izdvoji t --slucaj za sela
+    | jeGrad h && imaBazen h && brojStanovnika h > 150000 = h : izdvoji t
     | otherwise = izdvoji t
     where
-        jeSelo (Selo {}) = True 
+        jeSelo (Selo {}) = True
         jeSelo _ = False
         jeGrad (Grad {}) = True
         jeGrad _ = False
